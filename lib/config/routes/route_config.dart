@@ -1,0 +1,3 @@
+class RouteConfig {
+  RouteConfig._();
+}
