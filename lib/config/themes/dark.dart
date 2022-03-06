@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+part of 'controller.dart';
 
-import 'constants.dart';
-
-final darkTheme = ThemeData.dark().copyWith(
+final _darkTheme = ThemeData.dark().copyWith(
   textTheme: ThemeData.dark().textTheme.apply(
     fontFamily: GoogleFonts.poppins().fontFamily,
   ).copyWith(),
@@ -39,14 +36,6 @@ final darkTheme = ThemeData.dark().copyWith(
     ),
   ),
 
-  errorColor: ThemeConstants.errorColor,
-
-  dialogTheme: const DialogTheme(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(4.0)),
-    ),
-  ),
-
   dividerTheme: const DividerThemeData(
     indent: 16.0,
     endIndent: 16.0,
@@ -60,8 +49,7 @@ final darkTheme = ThemeData.dark().copyWith(
     filled: true,
   ),
 
-  snackBarTheme: const SnackBarThemeData(
-    behavior: SnackBarBehavior.floating,
-    actionTextColor: Colors.purple,
-  ),
+  errorColor: ThemeConstants.errorColor,
+  dialogTheme: ThemeConstants.dialogTheme,
+  snackBarTheme: ThemeConstants.snackBarTheme,
 );

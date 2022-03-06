@@ -1,10 +1,8 @@
 // ignore_for_file: file_names
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
-import '../../constants/asset.dart';
+import '../../constants/const.dart';
 import 'components/app_bar.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
@@ -13,13 +11,13 @@ class PageNotFoundScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Platform.isAndroid || Platform.isIOS ? null : AuthAppBar(context),
+      appBar: AuthAppBar(context),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              Assets.pagenotfound,
+              Assets.images.pagenotfound,
             ),
             const SizedBox(height: 24.0),
             const Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../config.dart';
+import '../../config/config.dart';
+
 class InteractiveText extends InkWell {
   InteractiveText(
     String data, {

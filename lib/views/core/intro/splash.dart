@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/app.dart';
+import '../../../config/config.dart';
+import '../../../constants/const.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({ Key? key }) : super(key: key);
@@ -17,7 +18,7 @@ class SplashScreen extends StatelessWidget {
           children: [
             const SizedBox(),
             Image.asset(
-              AppInfo.logo,
+              Assets.images.logo,
               height: productLogoSize,
               width: productLogoSize,
               fit: BoxFit.fitWidth,
@@ -32,12 +33,12 @@ class SplashScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      AppInfo.brandLogo,
+                      Assets.images.brandLogo,
                       height: brandLogoSize,
                       width: brandLogoSize,
                     ),
                     const SizedBox(width: 8.0),
-                    const Text(AppInfo.organization),
+                    Text(context.l10n.company),
                   ],
                 ),
                 const SizedBox(height: 24.0),

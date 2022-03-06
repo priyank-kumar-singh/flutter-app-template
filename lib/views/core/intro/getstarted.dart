@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../config.dart';
-import '../../../constants/app.dart';
+import '../../../config/config.dart';
 import '../../../constants/const.dart';
-import '../../../utils.dart';
+import '../../../util/util.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({
@@ -34,7 +33,7 @@ class GetStartedScreen extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(image ?? AppInfo.logo),
+                    image: AssetImage(image ?? Assets.images.logo),
                   ),
                 ),
               ),
@@ -49,25 +48,25 @@ class GetStartedScreen extends StatelessWidget {
                       vertical: kAuthBtnPadding + 24.0,
                     ),
                     child: Image.asset(
-                      image ?? AppInfo.logo,
+                      image ?? Assets.images.logo,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
                 ),
                 SizedBox(height: 8.0 + (topImage ?? true ? 0.0 : 48.0)),
-                const Text(
-                  AppInfo.homeTitle,
+                Text(
+                  context.l10n.title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: ThemeConstants.lightThemePrimaryColor,
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(height: 24.0),
-                const Text(
-                  AppInfo.tagline,
-                  style: TextStyle(
+                Text(
+                  context.l10n.tagline,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),

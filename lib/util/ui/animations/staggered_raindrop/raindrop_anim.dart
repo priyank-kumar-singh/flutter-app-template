@@ -1,7 +1,7 @@
-import 'package:flutter/widgets.dart';
+part of 'anim.dart';
 
-class StaggeredRaindropAnimation {
-  StaggeredRaindropAnimation(this.controller):
+class _StaggeredRaindropAnimation {
+  _StaggeredRaindropAnimation(this.controller):
         dropSize = Tween<double>(begin: 0, end: maximumDropSize).animate(
           CurvedAnimation(
             parent: controller,

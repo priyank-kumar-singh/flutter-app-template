@@ -1,3 +1,1 @@
-class RestAPI {
-  RestAPI._();
-}
+abstract class RestAPI {}

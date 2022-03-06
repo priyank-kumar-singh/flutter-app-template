@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../../../config.dart';
-import '../../../constants/asset.dart';
+import '../../../config/config.dart';
 import '../../../constants/const.dart';
-import '../../../utils.dart';
+import '../../../util/util.dart';
 import '../components/app_bar.dart';
 import '../components/form_field.dart';
 
@@ -89,7 +88,7 @@ class _SigninScreenState extends State<SigninScreen> {
       vertical: 64.0,
     ),
     child: Image.asset(
-      Assets.loginPageImage,
+      Assets.images.loginPageImage,
       fit: BoxFit.fitWidth,
     ),
   );

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../config.dart';
-import '../../../constants/app.dart';
-import '../../../constants/asset.dart';
+import '../../../config/config.dart';
 import '../../../constants/const.dart';
-import '../../../utils.dart';
+import '../../../util/util.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -22,7 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       vertical: kAuthBtnPadding + 24.0,
     ),
     child: Image.asset(
-      Assets.welcomePageImage,
+      Assets.images.welcomePageImage,
       fit: BoxFit.fitWidth,
     ),
   );
@@ -94,10 +92,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: [
               image,
               const SizedBox(height: 8.0),
-              const Text(
-                AppInfo.homeTitle,
+              Text(
+                context.l10n.title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: ThemeConstants.lightThemePrimaryColor,
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
@@ -106,9 +104,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               const SizedBox(
                 height: 24.0,
               ),
-              const Text(
-                AppInfo.tagline,
-                style: TextStyle(
+              Text(
+                context.l10n.tagline,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),

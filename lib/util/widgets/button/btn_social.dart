@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/asset.dart';
+import '../../../constants/assets/path.dart';
 import '../../helpers/url_launch.dart';
 
 class SocialMediaButton extends InkWell {
@@ -38,11 +38,11 @@ class SocialMediaButton extends InkWell {
                           Radius.circular(iconBorderRadius ?? 4.0)),
                       child: Image(
                           image: AssetImage(
-                              '${Assets.icons}/${icon.toLowerCase()}.png')),
+                              '${AssetPath.icons}/${icon.toLowerCase()}.png')),
                     ),
                     iconSize: iconSize ?? 24.0,
                     splashRadius: splashRadius,
-                    onPressed: null,
+                    onPressed: !mini ? null : (onTap ?? (url == null ? null : () async => await URLHelper.open(url))),
                   ),
                   Visibility(
                     visible: !mini,
@@ -61,10 +61,7 @@ class SocialMediaButton extends InkWell {
               ),
             );
           }),
-          onTap: onTap ??
-              (url == null
-                  ? null
-                  : () async => await URLHelper.launch(url)),
+          onTap: mini ? null : (onTap ?? (url == null ? null : () async => await URLHelper.open(url))),
           onLongPress: onLongPress,
           onHover: onHover,
           onHighlightChanged: onHighlightChanged,

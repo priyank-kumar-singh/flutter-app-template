@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants/app.dart';
-import 'config.dart';
+import 'config/config.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,13 +26,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppInfo.name,
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: appTheme.themeMode,
+      onGenerateTitle: (context) => context.l10n.title,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       initialRoute: Routes.wrapper,
-      routes: Routes.routes,
+      onGenerateRoute: RouteHandler.generateRoute,
+      routes: RouteConfig.routes,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: appTheme.themeMode,
     );
   }
 }

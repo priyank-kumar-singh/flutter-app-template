@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../constants/app.dart';
-import 'painter.dart';
-import 'raindrop_anim.dart';
+part 'painter.dart';
+part 'raindrop_anim.dart';
 
 class StartupRainDropAnimation extends StatefulWidget {
   const StartupRainDropAnimation({
@@ -22,7 +21,7 @@ class _StartupRainDropAnimationState extends State<StartupRainDropAnimation>
     with SingleTickerProviderStateMixin {
   Size size = Size.zero;
   late final AnimationController _controller;
-  late final StaggeredRaindropAnimation _animation;
+  late final _StaggeredRaindropAnimation _animation;
 
   @override
   void initState() {
@@ -31,7 +30,7 @@ class _StartupRainDropAnimationState extends State<StartupRainDropAnimation>
       duration: Duration(milliseconds: widget.duration),
       vsync: this,
     );
-    _animation = StaggeredRaindropAnimation(_controller);
+    _animation = _StaggeredRaindropAnimation(_controller);
     _controller
       ..forward()
       ..addListener(() {
@@ -61,7 +60,7 @@ class _StartupRainDropAnimationState extends State<StartupRainDropAnimation>
           width: double.infinity,
           height: double.infinity,
           child: CustomPaint(
-            painter: HolePainter(
+            painter: _HolePainter(
               color: widget.color,
               holeSize: _animation.holeSize.value * size.width,
             ),
@@ -74,7 +73,7 @@ class _StartupRainDropAnimationState extends State<StartupRainDropAnimation>
             width: _animation.dropSize.value,
             height: _animation.dropSize.value,
             child: CustomPaint(
-              painter: DropPainter(
+              painter: _DropPainter(
                 visible: _animation.dropVisible.value,
               ),
             ),
@@ -87,7 +86,7 @@ class _StartupRainDropAnimationState extends State<StartupRainDropAnimation>
             child: Opacity(
               opacity: _animation.textOpacity.value,
               child: const Text(
-                AppInfo.tagline,
+                'Product or Brand Tagline',
                 style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 32),
               ),
             ),

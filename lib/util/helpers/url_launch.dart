@@ -1,64 +1,37 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../models/result.dart';
 
 class URLHelper {
   URLHelper._();
 
-  static Future<Result> launch(String url) async {
+  static Future<void> open(String url, [VoidCallback? onError]) async {
     if (await canLaunch(url)) {
       await launch(url);
-      return Result(code: Status.success);
     } else {
-      return Result(
-        code: Status.exception,
-        message: 'Failed to open required app.',
-      );
+      onError!();
     }
   }
 
-  static Future<Result> callto(String phone) async {
-    var url = 'tel://$phone';
-    if (await canLaunch(url)) {
-      await launch(url);
-      return Result(code: Status.success);
-    } else {
-      return Result(
-        code: Status.exception,
-        message: 'Failed to open phone',
-      );
-    }
+  static Future<void> callto(String phone, {VoidCallback? onError}) async {
+    await open('tel://$phone', onError);
   }
 
-  static Future<Result> mailTo({
+  static Future<void> mailTo({
     required String email,
     required String subject,
     required String body,
+    VoidCallback? onError,
   }) async {
-    var url = 'mailto:$email?subject=$subject&body=$body';
-    if (await canLaunch(url)) {
-      await launch(url);
-      return Result(code: Status.success);
-    } else {
-      return Result(
-        code: Status.exception,
-        message: 'Failed to open email.',
-      );
-    }
+    await open('mailto:$email?subject=$subject&body=$body', onError);
   }
 
-  static Future<Result> launchMaps(GeoPoint source, GeoPoint destination) async {
+  static Future<void> launchMaps(GeoPoint source, GeoPoint destination) async {
     var url = "http://maps.google.com/maps?saddr=" +
         source.latitude.toString() + "," +
         source.longitude.toString() + "&daddr=" +
         destination.latitude.toString() + "," +
         destination.longitude.toString();
-    if (await canLaunch(url)) {
-      await launch(url);
-      return Result(code: Status.success);
-    } else {
-      return Result(code: Status.exception, message: 'Failed to open maps');
-    }
+    await open(url);
   }
 }

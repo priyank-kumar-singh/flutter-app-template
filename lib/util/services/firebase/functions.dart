@@ -5,7 +5,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 
-import '../../../models/result.dart';
+import '../../../models/models.dart';
 
 class FirebaseFunctionService {
   static final _functions = FirebaseFunctions.instance;

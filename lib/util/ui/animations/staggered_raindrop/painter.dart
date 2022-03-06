@@ -1,7 +1,7 @@
-import 'package:flutter/widgets.dart';
+part of 'anim.dart';
 
-class DropPainter extends CustomPainter {
-  DropPainter({this.visible = true});
+class _DropPainter extends CustomPainter {
+  _DropPainter({this.visible = true});
 
   bool visible;
 
@@ -22,8 +22,8 @@ class DropPainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
 
-class HolePainter extends CustomPainter {
-  HolePainter({
+class _HolePainter extends CustomPainter {
+  _HolePainter({
     required this.color,
     required this.holeSize,
   });

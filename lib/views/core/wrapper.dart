@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import '../../config.dart';
-import '../../utils.dart';
+import '../../config/config.dart';
+import '../../util/util.dart';
 import '../dashboard/home.dart';
 import 'auth/welcome.dart';
 import 'intro/startup_anim.dart';
