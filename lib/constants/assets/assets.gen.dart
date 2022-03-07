@@ -52,6 +52,22 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/welcome.png
   AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');
+
+  String get pagenotfound => 'null';
+
+  String get loginPageImage => 'null';
+
+  String get signupPageImage => 'null';
+
+  String get welcomePageImage => 'null';
+
+  String get logo => 'null';
+
+  String get onboarding1 => 'null';
+
+  String get onboarding2 => 'null';
+
+  String get brandLogo => 'null';
 }
 
 class Assets {

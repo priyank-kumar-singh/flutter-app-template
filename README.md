@@ -11,11 +11,11 @@ Now, we will see what folders and files we need to create so that the applicatio
 
 **Step 3:** &nbsp;Copy dependencies from the **dependencies.txt** file and paste them into pubspec.yaml file, then run <code>flutter pub get</code> command to install dependencies.
 
-**Step 4:** &nbsp;Remove any unwanted dependencies and respective files or part of code, and we're good to go.
+**Step 4:** &nbsp;Remove any unwanted dependencies and respective files or piece of code, and we're good to go.
 
 **Note:** There is a piece of code for initialisation of SQL, SharedPreferences and Firebase in the file *wrapper.dart* with a method called initTools. We may need to modify/remove this piece of code at some point as per our needs.
 
-## Understand File/Folder Structuring
+## Structure Design
 
 <!-- The image below describes the folder structure, used in this template. -->
 
@@ -27,7 +27,7 @@ Now, we will see what folders and files we need to create so that the applicatio
 - **Icons:** Instead of adding icon images in images folder, I created another folder to keep em separate.
 - **Fonts:** This folder contains all custom font files.
 - **HTML:** This folder contains any HTML content which we need to add in our mobile app (Generally the licensed content of the application or any .html files which we need to load in the application.
-- **L10N:** If our application supports Internationalization then need to add .arb files for all the supporting different languages i.e If we need to support English and French then need to add en.arb and fr.arb in this folder.
+- **L10N:** If our application supports Internationalization then we need to add .arb files for all the supporting languages i.e If we need to support English and French then need to add en.arb and fr.arb in this folder.
 
 **2. Config:** This folder contains routes and themes related configurations.
 
@@ -59,7 +59,7 @@ Now, we will see what folders and files we need to create so that the applicatio
 
 *wrapper.dart* file inside *views/core/* folder contains code for the possible entry point when our application starts-up, and *wrapper.dart* file also contains some piece of code that initialises SQL, SharedPrefrences and Firebase with a method called initTools(). We may need to modify/remove this piece of code at some point as per our needs.
 
-## Internationlization
+## Internationalization
 Sometimes we want our application to support multiple languages and for that flutter gen generates localizations for different locales present in mentioned directory, and for this we need to setup some things first.
 
 **1.** Create a file called *l10n.yaml* in the root directory of our project and add below content
@@ -81,10 +81,10 @@ flutter:
   uses-material-design: true
 ```
 
-**3.** Run <code>flutter pub get</code> to generate localization files. These files will be present inside the *.dart_tool* folder in the root directory of the flutter project.
+**3.** Run <code>flutter pub get</code> to generate localization files. These files will be present inside the *.dart_tool* folder in the root directory of the flutter project, and for more info check references.
 
-## Assets Generator
-Writing absolute asset path in a large project can be painful. So we will be avoiding writing absolute path for any asset instead we will generate some code that gives us access to their path.
+## Asset Generator
+Writing absolute asset path in a large project can be painful and lead to errors. So we will be avoiding writing absolute path for any asset instead we will generate some code that gives us access to their path.
 
 **1.** Install **flutter_gen** package globally. See references for more info.
 
@@ -114,7 +114,8 @@ Article by GeeksForGeeks: [geeksforgeeks.org/flutter-file-structure](https://www
 Bloc Pattern: [Getting started with Flutter Bloc Pattern](https://www.mitrais.com/news-updates/getting-started-with-flutter-bloc-pattern/),
 [Architect your Flutter Project using Bloc](https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1) <br>
 Bloc Library: [bloclibrary.dev/gettingstarted](https://bloclibrary.dev/#/gettingstarted) <br>
-Flutter Gen: [pub.dev/packages/flutter_gen](https://pub.dev/packages/flutter_gen) <br><br>
+Flutter Gen: [pub.dev/packages/flutter_gen](https://pub.dev/packages/flutter_gen) <br>
+Internationalization: [docs.flutter.dev/internationalization](https://docs.flutter.dev/development/accessibility-and-localization/internationalization) <br><br>
 
 ## Find me around web: <img align="left" src="https://raw.githubusercontent.com/priyank-kumar-singh/priyank-kumar-singh/main/assets/hacker.png" height="150" width="150"/>
 
