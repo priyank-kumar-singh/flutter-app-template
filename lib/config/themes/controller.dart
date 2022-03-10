@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'constants.dart';
-export 'constants.dart';
-
-part 'light.dart';
-part 'dark.dart';
+import 'theme.dart';
+export 'theme.dart';
 
 class AppTheme with ChangeNotifier {
   static late ThemeMode _currentThemeMode;
   static late bool _isDark;
+
+  static final List<MyTheme> themes = [
+    LightTheme(),
+    DarkTheme(),
+  ];
 
   AppTheme([bool? isDark]) {
     if (isDark != null) {
@@ -27,8 +28,9 @@ class AppTheme with ChangeNotifier {
   ThemeMode get themeMode => _currentThemeMode;
   bool get isDark => _isDark;
 
-  static ThemeData get light => _lightTheme;
-  static ThemeData get dark => _darkTheme;
+  static ThemeData get light => themes[0].themeData;
+  static ThemeData get dark => themes[1].themeData;
+  MyTheme get theme => _isDark ? themes[1] : themes[0];
 
   void useLightThemeMode() {
     _currentThemeMode = ThemeMode.light;

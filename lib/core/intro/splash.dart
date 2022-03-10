@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/config.dart';
-import '../../../constants/const.dart';
+import '../../config/config.dart';
+import '../../constants/const.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({ Key? key }) : super(key: key);

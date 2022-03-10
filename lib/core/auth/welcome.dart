@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/config.dart';
-import '../../../constants/const.dart';
-import '../../../util/util.dart';
+import '../../config/config.dart';
+import '../../constants/const.dart';
+import '../../util/util.dart';
+import '../../widgets/widgets.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -95,8 +96,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Text(
                 context.l10n.title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: ThemeConstants.lightThemePrimaryColor,
+                style: TextStyle(
+                  color: appTheme.theme.primaryColor,
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -135,15 +136,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 padding: const EdgeInsets.symmetric(
                   vertical: 24.0,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Read our '),
-                    InteractiveText(
+                child: InteractiveText(
+                  text: [
+                    InteractiveTextItem('Read our '),
+                    InteractiveTextItem(
                       'Terms and Conditions',
                       onTap: () => handleButtons(context, Routes.tnc),
                     ),
                   ],
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
                 ),
               ),
             ],

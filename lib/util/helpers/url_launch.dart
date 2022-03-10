@@ -26,12 +26,12 @@ class URLHelper {
     await open('mailto:$email?subject=$subject&body=$body', onError);
   }
 
-  static Future<void> launchMaps(GeoPoint source, GeoPoint destination) async {
+  static Future<void> launchMaps(GeoPoint source, GeoPoint destination, {VoidCallback? onError}) async {
     var url = "http://maps.google.com/maps?saddr=" +
         source.latitude.toString() + "," +
         source.longitude.toString() + "&daddr=" +
         destination.latitude.toString() + "," +
         destination.longitude.toString();
-    await open(url);
+    await open(url, onError);
   }
 }

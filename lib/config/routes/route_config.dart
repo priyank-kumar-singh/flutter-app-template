@@ -1,13 +1,8 @@
 import 'package:flutter/widgets.dart';
 
+import '../../core/core.dart';
+import '../../modules/modules.dart';
 import '../../util/util.dart';
-import '../../views/core/auth/signin.dart';
-import '../../views/core/auth/signup.dart';
-import '../../views/core/auth/welcome.dart';
-import '../../views/core/intro/getstarted.dart';
-import '../../views/core/intro/onboarding.dart';
-import '../../views/core/wrapper.dart';
-import '../../views/dashboard/home.dart';
 
 import 'routes.dart';
 

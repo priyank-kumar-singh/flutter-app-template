@@ -1,65 +1,57 @@
-part of 'controller.dart';
+part of 'theme.dart';
 
-final _lightTheme = ThemeData.light().copyWith(
-  textTheme: ThemeData.light().textTheme.apply(
+class LightTheme extends MyTheme {
+  @override
+  Color get primaryColor => const Color(0xFF0B4AAA);
+
+  @override
+  Color get secondaryColor => const Color(0xFFF0EFEF);
+
+  @override
+  TextTheme get textTheme => ThemeData.light().textTheme.apply(
     fontFamily: GoogleFonts.poppins().fontFamily,
-  ).copyWith(),
-  primaryTextTheme: ThemeData.light().textTheme.apply(
-    fontFamily: GoogleFonts.poppins().fontFamily,
-  ).copyWith(),
+  );
 
-  appBarTheme: AppBarTheme(
-    titleTextStyle: TextStyle(
-      color: Colors.white,
-      fontSize: 20.0,
-      fontFamily: GoogleFonts.poppins().fontFamily,
-      fontWeight: FontWeight.w600,
+  @override
+  TextTheme get primaryTextTheme => textTheme;
+
+  @override
+  ThemeData get themeData => ThemeData.light().copyWith(
+    textTheme: textTheme,
+    primaryTextTheme: primaryTextTheme,
+
+    appBarTheme: AppBarTheme(
+      titleTextStyle: titleTextStyle.copyWith(
+        color: Colors.white,
+      ),
+      toolbarTextStyle: toolbarTextStyle.copyWith(
+        color: Colors.white,
+      ),
     ),
-    toolbarTextStyle: TextStyle(
-      color: Colors.white,
-      fontSize: 14.0,
-      fontFamily: GoogleFonts.poppins().fontFamily,
+
+    bottomNavigationBarTheme: bottomNavigationBarTheme.copyWith(
+      selectedItemColor: Colors.blue.shade700,
+      unselectedItemColor: Colors.grey.shade600,
     ),
-  ),
 
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    type: BottomNavigationBarType.fixed,
-    showSelectedLabels: false,
-    showUnselectedLabels: false,
-    selectedItemColor: Colors.blue.shade700,
-    unselectedItemColor: Colors.grey.shade600,
-    selectedLabelStyle: GoogleFonts.poppins(
-      fontSize: 11.0,
-      fontWeight: FontWeight.w500,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: primaryColor,
+      // primary: const Color(0xFF0B4AAA),
+      // secondary: const Color.fromARGB(255, 95, 131, 184),
     ),
-    unselectedLabelStyle: GoogleFonts.poppins(
-      fontSize: 11.0,
-      fontWeight: FontWeight.w500,
+
+    dialogTheme: dialogTheme,
+
+    errorColor: errorColor,
+
+    dividerTheme: dividerTheme.copyWith(
+      color: Colors.grey.shade600,
     ),
-  ),
 
-  colorScheme: ColorScheme.fromSeed(
-    seedColor: ThemeConstants.lightThemePrimaryColor,
-    // primary: const Color(0xFF0B4AAA),
-    // secondary: const Color.fromARGB(255, 95, 131, 184),
-  ),
-
-  dividerTheme: DividerThemeData(
-    color: Colors.grey.shade600,
-    indent: 16.0,
-    endIndent: 16.0,
-  ),
-
-  inputDecorationTheme: const InputDecorationTheme(
-    border: OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+    inputDecorationTheme: inputDecorationTheme.copyWith(
+      fillColor: const Color(0xFFEEEEEE)
     ),
-    filled: true,
-    fillColor: Color(0xFFEEEEEE),
-  ),
 
-  errorColor: ThemeConstants.errorColor,
-  dialogTheme: ThemeConstants.dialogTheme,
-  snackBarTheme: ThemeConstants.snackBarTheme,
-);
+    snackBarTheme: snackBarTheme,
+  );
+}

@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../constants/const.dart';
-import 'components/app_bar.dart';
+import '../constants/const.dart';
+import 'components/core.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
   const PageNotFoundScreen({Key? key}) : super(key: key);

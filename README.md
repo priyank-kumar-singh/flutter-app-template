@@ -29,7 +29,7 @@ Now, we will see what folders and files we need to create so that the applicatio
 - **HTML:** This folder contains any HTML content which we need to add in our mobile app (Generally the licensed content of the application or any .html files which we need to load in the application.
 - **L10N:** If our application supports Internationalization then we need to add .arb files for all the supporting languages i.e If we need to support English and French then need to add en.arb and fr.arb in this folder.
 
-**2. Config:** This folder contains routes and themes related configurations.
+**2. Config:** This folder contains routes, themes and localization related configurations.
 
 - **Routes:** This folder contains three files namely *route_config.dart, route_handler.dart,* and *routes.dart*. See references for more info.
 
@@ -41,23 +41,22 @@ Now, we will see what folders and files we need to create so that the applicatio
 - **const.dart:** All of the global constants will be present in this file.
 - **keys.dart:** Global keys that we will be using for transition or other.
 
-**4. Models:** Models are just classes which help us to determine the structure of the data, and all of them go inside this folder.
+**4. Core:** Core features like Login/auth, walkthrough screens (Screens which are only visible at after the install only), application setting features are the core features that should be added in this folder.
 
-**5. Util:** All of the utilities like helper functions, layout delegate/builders, mixins, services, ui material goes inside this folder which can be used throught the application.
+**5. Models:** Models are just classes which help us to determine the structure of the data, and all of them go inside this folder.
+
+**6. Modules:** All of the screens/pages that will be visible to the user will go inside this folder. This folder further contain folders for every module we are going to use in our app, and all related content will go in other folder. See References for more info.
+
+**7. Util:** All of the utilities like helper functions, layout delegate/builders, mixins, services, ui material goes inside this folder which can be used throught the application.
 - **Helpers:** In many scenarios, we need to write code multiple times for the same thing like converting the every word first characters to be uppercase. This kind of code can be made common to reduce the redundancy and add that code in helpers files which are present in lib/utils/helpers/text_helper.dart.
 
 - **Services:** Code for any service like sql, shared_pref, firebase, aws, or other will go inside this folder, and code for services like *firebase, sqflite,* and *shared_preferences* is already been added here, we can modify these services as per our needs."
 
 - **UI:** All the common UI related things will go inside this folder like custom animations, custom dialogs, and custom widgets like an input text box with search icon, autocomplete widgets, Error message banners, custom checkbox chips related utils can be present in this file and will be used thoughout the application.
 
-- **Widgets:** In a large scale application, we need to make more customized widgets rather than flutter default widgets. Suppose we need to make use of our own custom ElevatedButton, Divider etc which we can use throughout our application then that kind of customization widgets will be present inside this widgets.
+**8. Widgets:** In a large scale application, we need to make more customized widgets rather than flutter default widgets. Suppose we need to make use of our own custom ElevatedButton, Divider etc which we can use throughout our application then that kind of customization widgets will be present inside this widgets.
 
-**6. Views:** All of the screens/pages that will be visible to the user will go inside this folder.
-- **Core:** Core features like Login/auth, walkthrough screens (Screens which are only visible at after the install only), application setting features are the core features that should be added in this folder.
-
-- **Modules:** Views folder further contain folders for every module we are going to use in our app, and each module can again contain multiple folders so that we can separate our presentation from business logic. See References for more info.
-
-*wrapper.dart* file inside *views/core/* folder contains code for the possible entry point when our application starts-up, and *wrapper.dart* file also contains some piece of code that initialises SQL, SharedPrefrences and Firebase with a method called initTools(). We may need to modify/remove this piece of code at some point as per our needs.
+*wrapper.dart* file inside *core/* folder contains code for the possible entry point when our application starts-up, and *wrapper.dart* file also contains some piece of code that initialises SQL, SharedPrefrences and Firebase with a method called initTools(). We may need to modify/remove this piece of code at some point as per our needs.
 
 ## Internationalization
 Sometimes we want our application to support multiple languages and for that flutter gen generates localizations for different locales present in mentioned directory, and for this we need to setup some things first.

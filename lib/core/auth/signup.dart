@@ -2,31 +2,42 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../../../config/config.dart';
-import '../../../constants/const.dart';
-import '../../../util/util.dart';
-import '../components/app_bar.dart';
-import '../components/form_field.dart';
+import '../../config/config.dart';
+import '../../constants/const.dart';
+import '../../util/util.dart';
+import '../../widgets/widgets.dart';
+import '../components/core.dart';
 
-class SigninScreen extends StatefulWidget {
-  const SigninScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
-  _SigninScreenState createState() => _SigninScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   GlobalKey<FormState> formKey = GlobalKey();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   late ProgressDialog progressDialog;
-  String? email, password, error;
+  String? name, email, password, error;
 
   void saveForm() {
     if (!formKey.currentState!.validate()) return;
     formKey.currentState!.save();
     FocusScope.of(context).unfocus();
-    handleEmailPasswordAuth();
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      useSafeArea: true,
+      builder: (_) => TnCDialog(
+        onDecline: () => Navigator.of(context).pop(),
+        onAccept: () {
+          Navigator.of(context).pop();
+          handleEmailPasswordAuth();
+        },
+      ),
+    );
   }
 
   Future<void> handleEmailPasswordAuth() async {
@@ -39,7 +50,7 @@ class _SigninScreenState extends State<SigninScreen> {
       },
       onFinish: (user, data) async {
         await progressDialog.hide();
-        // TODO: onFinish SigningIn
+        // TODO: onFinish SigningUp
       },
       onError: (code, message) async {
         if (mounted) {
@@ -48,15 +59,15 @@ class _SigninScreenState extends State<SigninScreen> {
         }
       },
     );
-    await service.loginUser(email: email!, password: password!);
-  }
-
-  void handleForgotPassword() {
-    //TODO: Forgot Password
+    await service.createUser(
+      email: email!,
+      password: password!,
+      additional: {'name': name!},
+    );
   }
 
   void handleButton() {
-    Navigator.of(context).pushReplacementNamed(Routes.signup);
+    Navigator.of(context).pushReplacementNamed(Routes.signin);
   }
 
   @override
@@ -75,7 +86,7 @@ class _SigninScreenState extends State<SigninScreen> {
           children: const [
             CircularProgressIndicator(),
             SizedBox(width: 16.0),
-            Text('Logging In...'),
+            Text('Signing up new user...'),
           ],
         ),
       ),
@@ -84,11 +95,11 @@ class _SigninScreenState extends State<SigninScreen> {
 
   final image = Padding(
     padding: const EdgeInsets.symmetric(
-      horizontal: 32.0,
-      vertical: 64.0,
+      horizontal: 44.0,
+      vertical: 44.0,
     ),
     child: Image.asset(
-      Assets.images.loginPageImage,
+      Assets.images.signupPageImage,
       fit: BoxFit.fitWidth,
     ),
   );
@@ -105,6 +116,11 @@ class _SigninScreenState extends State<SigninScreen> {
             child: Column(
               children: [
                 image,
+                AuthTextFormField(
+                  hintText: 'Name',
+                  onSaved: (val) => name = val,
+                  validator: ValidationHelper.name,
+                ),
                 AuthTextFormField(
                   hintText: 'Email',
                   onSaved: (val) => email = val,
@@ -135,24 +151,20 @@ class _SigninScreenState extends State<SigninScreen> {
                   replacement: const SizedBox(height: 16.0),
                 ),
                 MyElevatedButton(
-                  buttonText: 'Login',
+                  buttonText: 'Sign Up',
                   onPressed: saveForm,
                 ),
-                const SizedBox(height: 24.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Don\'t have an account? '),
-                    InteractiveText(
-                      'Sign Up',
+                const SizedBox(height: 16.0),
+                InteractiveText(
+                  text: [
+                    InteractiveTextItem('Already have an account? '),
+                    InteractiveTextItem(
+                      'Login',
                       onTap: handleButton,
                     ),
                   ],
-                ),
-                const SizedBox(height: 8.0),
-                InteractiveText(
-                  'Forgot Password?',
-                  onTap: handleForgotPassword,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
                 ),
                 const SizedBox(height: 16.0),
               ],

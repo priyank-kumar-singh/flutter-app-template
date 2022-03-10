@@ -51,8 +51,8 @@ class MyElevatedButton extends StatelessWidget {
               ),
               fillColor: useThemeColor
                   ? fillWithDark
-                      ? ThemeConstants.lightThemePrimaryColor
-                      : ThemeConstants.lightThemeSecondaryColor
+                      ? appTheme.theme.primaryColor
+                      : appTheme.theme.secondaryColor
                   : fillColor,
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,

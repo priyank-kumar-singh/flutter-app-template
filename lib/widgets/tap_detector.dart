@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../config/config.dart';
-
 class TapDetector extends InkWell {
   TapDetector({
     Key? key,
@@ -10,8 +8,6 @@ class TapDetector extends InkWell {
     GestureTapCallback? onLongPress,
     ValueChanged<bool>? onHover,
     ValueChanged<bool>? onHighlightChanged,
-    Color textColor = ThemeConstants.lightThemePrimaryColor,
-    FontWeight fontWeight = FontWeight.bold,
   }) : super(
           key: key,
           splashColor: Colors.transparent,

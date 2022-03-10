@@ -25,10 +25,3 @@ export 'ui/dialog/progress.dart';
 
 export 'ui/tnc/activity.dart';
 export 'ui/tnc/dialog.dart';
-
-export 'widgets/button/btn_elevated.dart';
-export 'widgets/button/btn_fab_back.dart';
-export 'widgets/button/btn_social.dart';
-export 'widgets/button/btn_switch.dart';
-export 'widgets/interactive_text.dart';
-export 'widgets/tap_detector.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-import '../../../config/config.dart';
-import '../../../constants/const.dart';
+import '../../config/config.dart';
+import '../../constants/const.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({ Key? key }) : super(key: key);
@@ -73,13 +73,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         PageViewModel(
           title: "Fractional shares",
           body: "Instead of having to buy an entire share, invest any amount you want.",
-          image: _buildImage('${Assets.images.onboarding1}'),
+          image: _buildImage(Assets.images.onboarding1),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Another title page",
           body: "Another beautiful body text for this example onboarding",
-          image: _buildImage('${Assets.images.onboarding2}'),
+          image: _buildImage(Assets.images.onboarding2),
           footer: ElevatedButton(
             onPressed: () {
               introKey.currentState?.animateScroll(0);

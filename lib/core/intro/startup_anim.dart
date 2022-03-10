@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../util/util.dart';
+
+import '../../util/util.dart';
 
 class StartupAnimationScreen extends StatelessWidget {
   const StartupAnimationScreen(

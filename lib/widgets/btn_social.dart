@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants/assets/path.dart';
-import '../../helpers/url_launch.dart';
+import '../../util/helpers/url_launch.dart';
 
 class SocialMediaButton extends InkWell {
   SocialMediaButton(
