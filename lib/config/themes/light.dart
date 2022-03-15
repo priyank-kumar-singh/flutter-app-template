@@ -1,47 +1,33 @@
-part of 'theme.dart';
+import 'package:flutter/material.dart';
+
+import 'theme.dart';
 
 class LightTheme extends MyTheme {
   @override
   Color get primaryColor => const Color(0xFF0B4AAA);
 
   @override
-  Color get secondaryColor => const Color(0xFFF0EFEF);
+  Color get secondaryColor1 => const Color(0xFFF0EFEF);
 
   @override
-  TextTheme get textTheme => ThemeData.light().textTheme.apply(
-    fontFamily: GoogleFonts.poppins().fontFamily,
+  ColorScheme? get colorScheme => ColorScheme.fromSeed(
+    seedColor: primaryColor,
   );
 
   @override
-  TextTheme get primaryTextTheme => textTheme;
+  TextTheme get textTheme => lightTextTheme;
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
-    textTheme: textTheme,
-    primaryTextTheme: primaryTextTheme,
-
-    appBarTheme: AppBarTheme(
-      titleTextStyle: titleTextStyle.copyWith(
-        color: Colors.white,
-      ),
-      toolbarTextStyle: toolbarTextStyle.copyWith(
-        color: Colors.white,
-      ),
-    ),
+    appBarTheme: appBarTheme,
 
     bottomNavigationBarTheme: bottomNavigationBarTheme.copyWith(
       selectedItemColor: Colors.blue.shade700,
       unselectedItemColor: Colors.grey.shade600,
     ),
 
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryColor,
-      // primary: const Color(0xFF0B4AAA),
-      // secondary: const Color.fromARGB(255, 95, 131, 184),
-    ),
-
+    colorScheme: colorScheme,
     dialogTheme: dialogTheme,
-
     errorColor: errorColor,
 
     dividerTheme: dividerTheme.copyWith(
@@ -53,5 +39,7 @@ class LightTheme extends MyTheme {
     ),
 
     snackBarTheme: snackBarTheme,
+    textTheme: textTheme,
+    primaryTextTheme: primaryTextTheme,
   );
 }

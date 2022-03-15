@@ -137,6 +137,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   vertical: 24.0,
                 ),
                 child: InteractiveText(
+                  context: context,
                   text: [
                     InteractiveTextItem('Read our '),
                     InteractiveTextItem(

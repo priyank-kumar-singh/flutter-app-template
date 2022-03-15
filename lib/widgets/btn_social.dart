@@ -1,71 +1,35 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants/assets/path.dart';
-import '../../util/helpers/url_launch.dart';
+import '../../util/util.dart';
 
-class SocialMediaButton extends InkWell {
-  SocialMediaButton(
-    SocialMediaIcons iconData, {
+/// This widget uses .png files for icons which needs to be present inside
+/// 'assets/icons/' folder in the root directory of the application.
+class SocialMediaButton extends StatelessWidget {
+  const SocialMediaButton(
+    this.iconData, {
     Key? key,
-    String? url,
-    bool mini = false,
-    bool constrainMinWidth = true,
-    double? iconSize,
-    double? iconBorderRadius,
-    double? splashRadius,
-    double? splashBorderRadius,
-    TextStyle? textStyle,
-    GestureTapCallback? onTap,
-    GestureTapCallback? onLongPress,
-    ValueChanged<bool>? onHighlightChanged,
-    ValueChanged<bool>? onHover,
-  }) : super(
-          key: key,
-          borderRadius:
-              BorderRadius.all(Radius.circular(splashBorderRadius ?? 4.0)),
-          child: Builder(builder: (_) {
-            String icon = getIconName(iconData);
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: constrainMinWidth && !mini ? 120.0 : 0.0,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: ClipRRect(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(iconBorderRadius ?? 4.0)),
-                      child: Image(
-                          image: AssetImage(
-                              '${AssetPath.icons}/${icon.toLowerCase()}.png')),
-                    ),
-                    iconSize: iconSize ?? 24.0,
-                    splashRadius: splashRadius,
-                    onPressed: !mini ? null : (onTap ?? (url == null ? null : () async => await URLHelper.open(url))),
-                  ),
-                  Visibility(
-                    visible: !mini,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Text(
-                        icon,
-                        style: textStyle ??
-                            const TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }),
-          onTap: mini ? null : (onTap ?? (url == null ? null : () async => await URLHelper.open(url))),
-          onLongPress: onLongPress,
-          onHover: onHover,
-          onHighlightChanged: onHighlightChanged,
-        );
+    this.url,
+    this.mini = false,
+    this.constrainMinWidth = true,
+    this.constrainedWidth = 74.0,
+    this.iconBorderRadius,
+    this.iconSize,
+    this.margin = const EdgeInsets.all(8.0),
+    this.onTap,
+    this.textStyle,
+  }) : super(key: key);
+
+  final SocialMediaIcons iconData;
+  final String? url;
+  final bool mini;
+  final bool constrainMinWidth;
+  final double constrainedWidth;
+  final double? iconSize;
+  final EdgeInsets margin;
+  final double? iconBorderRadius;
+  final TextStyle? textStyle;
+  final GestureTapCallback? onTap;
 
   static String getIconName(SocialMediaIcons iconData) {
     switch (iconData) {
@@ -83,7 +47,73 @@ class SocialMediaButton extends InkWell {
         return 'Twitter';
       case SocialMediaIcons.youtube:
         return 'YouTube';
+      default:
+        return 'Link';
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    String icon = getIconName(iconData);
+    return Padding(
+      padding: mini ? EdgeInsets.zero : margin,
+      child: OutlinedButton(
+        style: ButtonStyle(
+          side: MaterialStateProperty.all(BorderSide(
+            color: mini ? Colors.transparent : Colors.grey,
+          )),
+          padding: MaterialStateProperty.all(const EdgeInsets.all(16.0)),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(48.0),
+          )),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox.square(
+              dimension: iconSize ?? 24.0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(iconBorderRadius ?? 4.0),
+                ),
+                child: Visibility(
+                  visible: icon != 'Link',
+                  child: Image(
+                    image: AssetImage(
+                      AssetPath.icons + icon.toLowerCase() + '.png',
+                    ),
+                  ),
+                  replacement: const Icon(Icons.link),
+                ),
+              ),
+            ),
+            Visibility(
+              visible: !mini,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: constrainMinWidth ? constrainedWidth : 0.0,
+                  ),
+                  child: Text(
+                    icon,
+                    style: textStyle ??
+                        const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        onPressed: onTap ?? (url == null ? null : () async => await URLHelper.open(url!)),
+        onHover: (val) {
+          if (val) {
+            // Scaffold.maybeOf(context).
+          }
+        },
+      ),
+    );
   }
 }
 
@@ -95,4 +125,5 @@ enum SocialMediaIcons {
   medium,
   twitter,
   youtube,
+  link,
 }

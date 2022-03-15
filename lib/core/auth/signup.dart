@@ -156,6 +156,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 16.0),
                 InteractiveText(
+                  context: context,
                   text: [
                     InteractiveTextItem('Already have an account? '),
                     InteractiveTextItem(

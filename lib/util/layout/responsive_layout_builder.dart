@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../constants/const.dart';
 
 /// Represents the layout size passed to [ResponsiveLayoutBuilder.child].
-enum ResponsiveLayoutSize {
+enum LayoutSize {
   /// Small layout
   small,
 
@@ -43,7 +43,7 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
   /// Optional child widget builder based on the current layout size
   /// which will be passed to the `small`, `medium` and `large` builders
   /// as a way to share/optimize shared layout.
-  final Widget Function(ResponsiveLayoutSize currentSize)? child;
+  final Widget Function(LayoutSize currentSize)? child;
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +52,16 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
         final screenWidth = MediaQuery.of(context).size.width;
 
         if (screenWidth <= Breakpoints.small) {
-          return small(context, child?.call(ResponsiveLayoutSize.small));
+          return small(context, child?.call(LayoutSize.small));
         }
         if (screenWidth <= Breakpoints.medium) {
-          return medium(context, child?.call(ResponsiveLayoutSize.medium));
+          return medium(context, child?.call(LayoutSize.medium));
         }
         if (screenWidth <= Breakpoints.large) {
-          return large(context, child?.call(ResponsiveLayoutSize.large));
+          return large(context, child?.call(LayoutSize.large));
         }
 
-        return large(context, child?.call(ResponsiveLayoutSize.large));
+        return large(context, child?.call(LayoutSize.large));
       },
     );
   }

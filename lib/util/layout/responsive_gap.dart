@@ -11,26 +11,30 @@ class ResponsiveGap extends StatelessWidget {
   /// {@macro responsive_gap}
   const ResponsiveGap({
     Key? key,
-    this.small = 0,
-    this.medium = 0,
-    this.large = 0,
+    this.small,
+    this.medium,
+    this.large,
+    this.gap = 0.0,
   }) : super(key: key);
 
   /// A gap rendered on a small layout.
-  final double small;
+  final double? small;
 
   /// A gap rendered on a medium layout.
-  final double medium;
+  final double? medium;
 
   /// A gap rendered on a large layout.
-  final double large;
+  final double? large;
+
+  /// A gap rendered when layout specific gap not provided
+  final double gap;
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
-      small: (_, __) => Gap(small),
-      medium: (_, __) => Gap(medium),
-      large: (_, __) => Gap(large),
+      small: (_, __) => Gap(small ?? gap),
+      medium: (_, __) => Gap(medium ?? gap),
+      large: (_, __) => Gap(large ?? gap),
     );
   }
 }

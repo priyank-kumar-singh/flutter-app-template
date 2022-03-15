@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
+part of 'routes.dart';
 
-import '../../core/core.dart';
-
-abstract class RouteHandler {
-  static Route generateRoute(RouteSettings settings) {
+abstract class RouteHandler extends Routes {
+  static Route<Widget> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       default:
-        return routeBuilder(const PageNotFoundScreen());
+        return routeBuilder(const PageNotFoundScreen(), settings);
     }
   }
 
-  static MaterialPageRoute routeBuilder(Widget route) {
-    return MaterialPageRoute(builder: (_) => route);
+  static Route<Widget> routeBuilder(Widget route, RouteSettings settings) {
+    return MaterialPageRoute(builder: (_) => route, settings: settings);
   }
 }

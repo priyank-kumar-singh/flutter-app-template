@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import 'dark.dart';
+import 'light.dart';
 import 'theme.dart';
-export 'theme.dart';
 
 class AppTheme with ChangeNotifier {
   static late ThemeMode _currentThemeMode;

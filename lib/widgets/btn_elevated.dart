@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/config.dart';
+import '../config/config.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final String buttonText;
@@ -52,7 +52,7 @@ class MyElevatedButton extends StatelessWidget {
               fillColor: useThemeColor
                   ? fillWithDark
                       ? appTheme.theme.primaryColor
-                      : appTheme.theme.secondaryColor
+                      : appTheme.theme.secondaryColor1
                   : fillColor,
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,

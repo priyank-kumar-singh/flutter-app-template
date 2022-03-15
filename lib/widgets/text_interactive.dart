@@ -1,15 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../config/config.dart';
-
 class InteractiveTextItem {
   /// String to be displayed as a text
   final String text;
 
   /// GestureCallback which triggers in response to a tap event on the text
-  ///
-  /// if null this text will act as a normal text
   final GestureTapCallback? onTap;
 
   /// This [style] property will override [style] and [interactiveTextStyle]
@@ -23,8 +19,10 @@ class InteractiveTextItem {
   });
 }
 
+/// This widget lets you create rich text with links in between with ease.
 class InteractiveText extends RichText {
   InteractiveText({
+    required BuildContext context,
     required List<InteractiveTextItem> text,
     Key? key,
     TextStyle? style,
@@ -36,7 +34,7 @@ class InteractiveText extends RichText {
     TextAlign textAlign = TextAlign.start,
     TextDirection? textDirection,
     TextHeightBehavior? textHeightBehavior,
-    TextOverflow overflow = TextOverflow.ellipsis,
+    TextOverflow overflow = TextOverflow.clip,
     TextWidthBasis textWidthBasis = TextWidthBasis.parent,
     FontWeight? fontWeight = FontWeight.bold,
     Color? textColor,
@@ -52,8 +50,11 @@ class InteractiveText extends RichText {
                 style: e.style ??
                     (isInteractive
                         ? interactiveTextStyle ??
-                            TextStyle(color: textColor, fontWeight: fontWeight)
-                        : style ?? appTheme.theme.textTheme.bodyText2),
+                            TextStyle(
+                              color: textColor ?? Colors.blue,
+                              fontWeight: fontWeight,
+                            )
+                        : style ?? Theme.of(context).textTheme.bodyText2),
               );
             }).toList(),
           ),

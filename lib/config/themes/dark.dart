@@ -1,44 +1,32 @@
-part of 'theme.dart';
+import 'package:flutter/material.dart';
+
+import 'theme.dart';
 
 class DarkTheme extends MyTheme {
   @override
-  Color? get primaryColor => null;
+  Color? get primaryColor => const Color(0xFFA19CEA);
 
   @override
-  Color? get secondaryColor => null;
+  Color? get secondaryColor1 => null;
 
   @override
-  TextTheme get textTheme => ThemeData.dark().textTheme.apply(
-    fontFamily: GoogleFonts.poppins().fontFamily,
+  TextTheme get textTheme => darkTextTheme;
+
+  @override
+  TextStyle get titleTextStyle => super.titleTextStyle.copyWith(
+    color: primaryColor,
   );
 
   @override
-  TextTheme get primaryTextTheme => textTheme;
-
-  @override
   ThemeData get themeData => ThemeData.dark().copyWith(
+    appBarTheme: appBarTheme,
+    bottomNavigationBarTheme: bottomNavigationBarTheme,
+    errorColor: errorColor,
+    dialogTheme: dialogTheme,
+    dividerTheme: dividerTheme,
+    inputDecorationTheme: inputDecorationTheme,
+    snackBarTheme: snackBarTheme,
     textTheme: textTheme,
     primaryTextTheme: primaryTextTheme,
-
-    appBarTheme: AppBarTheme(
-      titleTextStyle: titleTextStyle.copyWith(
-        color: Colors.white,
-      ),
-      toolbarTextStyle: toolbarTextStyle.copyWith(
-        color: Colors.white,
-      ),
-    ),
-
-    bottomNavigationBarTheme: bottomNavigationBarTheme,
-
-    errorColor: errorColor,
-
-    dialogTheme: dialogTheme,
-
-    dividerTheme: dividerTheme,
-
-    inputDecorationTheme: inputDecorationTheme,
-
-    snackBarTheme: snackBarTheme,
   );
 }

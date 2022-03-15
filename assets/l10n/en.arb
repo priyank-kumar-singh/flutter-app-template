@@ -12,6 +12,7 @@
     "@company": {
         "description": "Shown as the name of the company or organization in different sections of the app"
     },
+    "back": "Back",
     "moves": "Moves: {count}, left: {left}",
     "@moves": {
         "description": "Semantic label for the moves",

@@ -15,13 +15,13 @@ Now, we will see what folders and files we need to create so that the applicatio
 
 **Note:** There is a piece of code for initialisation of SQL, SharedPreferences and Firebase in the file *wrapper.dart* with a method called initTools. We may need to modify/remove this piece of code at some point as per our needs.
 
-## Structure Design
+## Architectural Design
 
 <!-- The image below describes the folder structure, used in this template. -->
 
 <!-- <img src="raw/file_structure.png" width="50%"/> <br> -->
 
-**1. Assets:** This folder contains all of the images, icons, fonts, html and i18n.
+**1. Assets:** This folder contains all of the images, icons, fonts, html and l10n.
 - **Audios:** This is the folder where we store all our audio assets.
 - **Images:** This is the most important folder where we store all our images.
 - **Icons:** Instead of adding icon images in images folder, I created another folder to keep em separate.
@@ -83,7 +83,7 @@ flutter:
 **3.** Run <code>flutter pub get</code> to generate localization files. These files will be present inside the *.dart_tool* folder in the root directory of the flutter project, and for more info check references.
 
 ## Asset Generator
-Writing absolute asset path in a large project can be painful and lead to errors. So we will be avoiding writing absolute path for any asset instead we will generate some code that gives us access to their path.
+Writing absolute asset path in a large project can be painful and lead to errors. So we will be avoiding writing absolute path for any asset instead we will generate some code that gives us access to them with classes.
 
 **1.** Install **flutter_gen** package globally. See references for more info.
 
@@ -100,12 +100,12 @@ flutter_gen:
     rive: true
 ```
 
-**3.** Run the following command to generate assets and run it everytime we made any changes to our assets, so as to generate new assets and replace any previous assets. <br>
+**3.** Run the following command to generate assets and run it everytime you made any changes to the assets, so as to generate new asset classes and replace any previous asset classes. <br>
 ```
 flutter packages pub run build_runner build
 ```
 
-**Note:** If you're using VSCode and still seeing linter errors? just restart dart analysis server or VSCode and you're good to go.
+**Note:** Using VSCode and seeing linter errors for AppLocalizations? I faced this issue as well, just make sure you have ran <code>flutter pub get</code> command once, now either restart your *editor* or *restart dart analysis server* from command palette, and you're good to go.
 
 ## References
 Article by Flutter Community: [medium.com/flutter-community](https://medium.com/flutter-community/flutter-scalable-folder-files-structure-8f860faafebd) <br>

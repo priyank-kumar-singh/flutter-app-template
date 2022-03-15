@@ -44,3 +44,5 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/audios/
+    - assets/rive/

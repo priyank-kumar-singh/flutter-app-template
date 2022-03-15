@@ -140,6 +140,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 ),
                 const SizedBox(height: 24.0),
                 InteractiveText(
+                  context: context,
                   text: [
                     InteractiveTextItem('Don\'t have an account? '),
                     InteractiveTextItem(
@@ -152,6 +153,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 ),
                 const SizedBox(height: 8.0),
                 InteractiveText(
+                  context: context,
                   text: [
                     InteractiveTextItem(
                       'Forgot Password?',

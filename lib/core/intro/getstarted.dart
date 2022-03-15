@@ -82,6 +82,7 @@ class GetStartedScreen extends StatelessWidget {
                     vertical: 32.0,
                   ),
                   child: InteractiveText(
+                    context: context,
                     text: [
                       InteractiveTextItem('Read our '),
                       InteractiveTextItem(

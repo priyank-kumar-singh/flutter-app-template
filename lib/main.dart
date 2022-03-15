@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
       onGenerateTitle: (context) => context.l10n.title,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      initialRoute: Routes.wrapper,
+      initialRoute: Routes.root,
       routes: RouteConfig.routes,
       onGenerateRoute: RouteHandler.generateRoute,
       theme: AppTheme.light,
